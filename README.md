@@ -1,7 +1,7 @@
 # GoTransport
 It is a web application that makes the life of people using public transport easier.
 
-Hosted Website: http://gotransport.herokuapp.com
+Hosted Website: https://gotransport.herokuapp.com
 
 Features of our WebApp: 
 
