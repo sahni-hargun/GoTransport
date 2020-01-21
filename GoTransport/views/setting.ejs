@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Settings</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+    <link rel="stylesheet" type="text/css" href="settings.css">
+</head>
+<body>
+
+        <nav id="mainNavbar" class="navbar navbar-expand-lg navbar-light mb-5">
+            <div class="container">
+                <a class="navbar-brand" href="/user/<%= currentUser._id %>"><i class="fas fa-user-tie"></i> <%=user.username%></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/leaderboard"><i class="fas fa-clipboard-list"></i> Leader Board</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout"><i class="fas fa-sign-out-alt"></i> Log Out</a>
+                    </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container">
+
+            <div class="row">
+                <div class="col-sm-4">
+                    <img class="img-fluid" src="<%=user.image%>" alt="">
+                    <div class="display-4 text-center"><%=user.username%></div>
+                    <div class="display-5 text-center"><%=user.email%></div>
+                    <div class="display-5 text-center"><%=user.phoneNumber%></div>
+                    <div class="lead text-center"><%=user.bio%></div>
+                </div>
+
+                <div class="col-sm-1"></div>
+
+                <div class="col-sm-7">
+                    <form action="/user/<%=user._id%>?_method=PUT" method="POST" class="form-group">
+                        <div class="form-group">
+                            <label for="Name">Name</label>
+                            <input type="text" class="form-control" name="username" id="Name" value="<%=user.username%>">
+                        </div>
+                        <div class="form-group">
+                            <label for="Image">Image</label>
+                            <input type="text" class="form-control" id="Image" name="image" value="<%=user.image%>">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Email</label>
+                            <input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp" value="<%=user.email%>">
+                            <small id="emailHelp" class="form-text text-muted lead active">We'll never share your email with anyone else.</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="Number">Contact Number</label>
+                            <input type="number" class="form-control" name="phoneNumber" id="Number" value="<%=user.phoneNumber%>">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Password</label>
+                            <input type="password" class="form-control" name="password" id="exampleInputPassword1" value="<%=user.password%>">
+                        </div>           
+                        <div class="form-group">
+                        <label for="exampleFormControlTextarea1">BIO</label>
+                        <textarea class="form-control" name="bio" id="exampleFormControlTextarea1" rows="3"><%=user.bio%></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+
+
+            <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    
+</body>
+</html>

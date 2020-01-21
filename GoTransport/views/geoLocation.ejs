@@ -1,0 +1,62 @@
+<% include ./partials/header %>
+    <style>
+       /* Set the size of the div element that contains the map */
+      #map {
+        margin-top: 20%;
+        margin: 0 auto;
+        height: 400px;  /* The height is 400 pixels */
+        width: 50%;  /* The width is the width of the web page */
+       }
+       body{
+        background: linear-gradient(#70e1f5,#ffd194)
+       }
+    </style>
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+  <body >
+    <h3 class="text-center">Tracked Location is This %></h3>
+    
+    <div id="map"></div>
+    <script>
+// Initialize and add the map
+function initMap() {
+  // The location of Uluru
+//   var uluru = {lat: 28.6014, lng: 77.1989};
+  var uluru = {lat: <%= latitude%>, lng: <%= longitude %>};
+  // The map, centered at Uluru
+  var map = new google.maps.Map(
+      document.getElementById('map'), {zoom: 25, center: uluru});
+  // The marker, positioned at Uluru
+  var marker = new google.maps.Marker({position: uluru, map: map});
+}
+
+    </script>
+    <!--Load the API from the specified URL
+    * The async attribute allows the browser to render the page while the API loads
+    * The key parameter will contain your own API key (which is not needed for this tutorial)
+    * The callback parameter executes the initMap() function -->
+
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDZc99u5sdXOCYQUDqkyju1EK3Jyb-hJbU&callback=initMap">
+    </script>
+    <div class="footer">
+   
+        <a href="https://facebook.com"><img class="facebook" src="/images/fb.png"></a>
+     <a href="https://youtube.com"><img class="youtube" src="/images/youtube.png"></a>
+     <a href="https://twitter.com"><img class="twitter" src="/images/twitter.png"></a>
+     <a href="https://in.linkedin.com"><img class="linkedin" src="/images/linkedin.png"></a>
+     <a href="https://instagram.com"><img class="instagram" src="/images/instagram.png"></a>
+     <p class="bold">© 2019 GoTransport</p>
+      </div>
+     <!-- CHATBOT -->
+     <script src="https://static.landbot.io/landbot-widget/landbot-widget-1.0.0.js"></script>
+     <script>
+       var myLandbot = new LandbotLivechat({
+         index: 'https://landbot.io/u/H-237423-JDZ9NF3IRHYPWXAN/index.html',
+       });
+     </script>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+     

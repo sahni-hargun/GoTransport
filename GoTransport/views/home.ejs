@@ -1,0 +1,393 @@
+<% include ./partials/header %>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js" crossorigin="anonymous"></script>
+
+<style>
+body,html{
+  background: linear-gradient(#fceabb,#f8b500);
+}
+</style>
+<div class="notices">
+    <marquee>
+    
+       
+        <span><a href="http://it.delhigovt.nic.in/writereaddata/Cir20193411.pdf" style="color:#0055a0">*Issue medical card to retired employees of DTC</a>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        <span><a href="http://it.delhigovt.nic.in/writereaddata/Cir20193412.pdf" style="color:#0055a0">*Regarding different Hindi Competitions 2019-2020</a>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        <span><a href="http://it.delhigovt.nic.in/writereaddata/Cir20193408.pdf" style="color:#0055a0">*Hindi Tippan Competition</a>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        <span><a href="http://it.delhigovt.nic.in/writereaddata/Cir20193409.pdf" style="color:#0055a0">*Link Officer</a>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        <span><a href="http://it.delhigovt.nic.in/writereaddata/Cir20193407.58.48_1.pdf" style="color:#0055a0">*Corporation(DTC)  Link Officers</a>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+    
+    </marquee>
+    </div>
+    <style>
+    main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+p main .text{
+  font-size: 1rem;
+}
+.text {
+  background: url(https://media.giphy.com/media/3o6Ztb45EYezY9x9gQ/giphy.gif);
+  background-size: contain;
+  background-position: top left;
+  -webkit-background-clip: text;
+  color: transparent;
+  font-size: 3rem;
+  font-weight: bold;
+  font-family: sans-serif;
+}
+</style>
+
+
+    <div class="container-fluid">
+       <div class="jumbotron jumbotron-fluid" style="background: linear-gradient(#EF3B36,#FFFFFF)" >
+      <div class="container-fluid">
+          <main>
+              <div class="text container-fluid text-center">
+                GO TRANSPORT
+                <br>
+                <div style="font-size : 0.5em" >Travelling to a better Future....</div>
+                
+              </div>
+             
+            </main>
+        
+      </div>
+    </div>
+  </div> 
+
+  <style>
+    .star {
+    animation: star 10s ease-out infinite;
+  }
+  .wars {
+    animation: wars 10s ease-out infinite;
+  }
+  .byline span {
+    animation: spin-letters 10s linear infinite;
+  }
+  .byline {
+    animation: move-byline 10s linear infinite;
+  }
+  
+  /* Keyframes */
+  @keyframes star {
+    0% {
+      opacity: 0;
+      transform: scale(1.5) translateY(-0.75em);
+    }
+    20% {
+      opacity: 1;
+    }
+    89% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    100% {
+      opacity: 0;
+      transform: translateZ(-1000em);
+    }
+  }
+  
+  @keyframes wars {
+    0% {
+      opacity: 0;
+      transform: scale(1.5) translateY(0.5em);
+    }
+    20% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    100% {
+      opacity: 0;
+      transform: translateZ(-1000em);
+    }
+  }
+  
+  @keyframes spin-letters {
+    0%, 10% {
+      opacity: 0;
+      transform: rotateY(90deg);
+    }
+    30% {
+      opacity: 1;
+    }
+    70%, 86% {
+      transform: rotateY(0);
+      opacity: 1;
+    }
+    95%, 100% {
+      opacity: 0;
+    }
+  }
+  
+  @keyframes move-byline {
+    0% {
+      transform: translateZ(5em);
+    }
+    100% {
+      transform: translateZ(0);
+    }
+  }
+  
+  /* Make the 3D work on the container */
+  .starwars-demo {
+    perspective: 800px;
+    transform-style: preserve3d;
+  }
+  
+  /* General styles and layout */
+  .my .container{
+    background: #000 url(//cssanimation.rocks/demo/starwars/images/bg.jpg);
+  }
+  
+  .starwars-demo {
+    height: 17em;
+    left: 50%;
+    position: absolute;
+    top: 53%;
+    transform: translate(-50%, -50%);
+    width: 34em;
+  }
+  
+  .byline span {
+    display: inline-block;
+  }
+  
+  img {
+    width: 100%;
+  }
+  
+  .star, .wars, .byline {
+    position: absolute;
+  }
+  
+  .star {
+    top: -0.75em;
+  }
+  
+  .wars {
+    bottom: -0.5em;
+  }
+  
+  .navbar-brand{
+    justify-content: center;
+  }
+  .byline {
+    color: #fff;
+    font-family: "ITC Serif Gothic", Lato;
+    font-size: 2.25em;
+    left: -2em;
+    letter-spacing: 0.4em;
+    right: -2em;
+    text-align: center; 
+    text-transform: uppercase;
+    top: 29%;
+  }
+  
+  /*** Media queries for adjusting to different screen sizes ***/
+  
+  @media only screen and (max-width: 600px) {
+    .starwars-demo {
+      font-size: 10px;
+    }
+  }
+  
+  @media only screen and (max-width: 480px) {
+    .starwars-demo {
+      font-size: 7px;
+    }
+  }
+
+  </style>
+    <title>Go Transport</title>
+  </head>
+  <body>
+        <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+              <div class="navbar-nav">
+                <a class="nav-item nav-link" href="/getLocation">Location Tracker</a>
+                <a class="nav-item nav-link" href="/searchLocation">Rescue Zones</a>
+                <a class="nav-item nav-link" href="/showBus">Available Buses</a>
+                <a class="nav-item nav-link" href="/sos">SOS</a>
+                <a class="nav-item nav-link" href="https://www.esri.com/library/brochures/pdfs/transportation-infrastructure.pdf">Geographic Information System</a>
+              </div>
+            </div>
+           </nav>  -->
+
+      <!-- <div class="text container-fluid text-center">
+                  <a class="item active">
+            Track Your Transport      
+          </a>
+          <a class="item">
+            Rescue Zones
+          </a>
+          <a class="item">
+            Available Seats
+          </a>
+          <a class="item">
+              Searching Bus Routes
+            </a>
+            <a class="item">
+                SOS
+              </a> -->
+        </div>
+  <div class = "container-fluid">
+        <div class="row">
+          <div class="col-sm-12 col-md-12 col-lg-12">
+        
+            <ul id="sb-slider" class="sb-slider">
+              <li>
+                
+                  <img src="https://images.unsplash.com/photo-1520594923568-1b5d82587f86?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" alt="image1"/>
+                <div class="sb-description">
+                  <h2 style="color: black" >Travel Freely</h2>
+                </div>
+              </li>
+              <li>
+               <img src="https://images.unsplash.com/photo-1488998628026-a1a79746cdcd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" alt="image2"/>
+                <div class="sb-description">
+                  <h2 style="color: black" >Convenient Travelling</h2>
+                </div>
+              </li>
+              <li>
+               <img src="https://images.unsplash.com/photo-1474487548417-781cb71495f3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1449&q=80" alt="image1"/>
+                <div class="sb-description">
+                  <h2 style="color: black" >Measuring Long Distances Easily</h2>
+                </div>
+              </li>
+              <li>
+                <img src="https://images.unsplash.com/photo-1475088092121-b7d3cd6e1482?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" alt="image1"/>
+                <div class="sb-description">
+                  <h2 style="color: black"  >Time Efficient</h2>
+                </div>
+              </li>
+              <li>
+                <img src="https://images.unsplash.com/photo-1493048529683-6f2371639710?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" alt="image1"/>
+                <div class="sb-description">
+                  <h2 style="color: black" >Knowing the City</h2>
+                </div>
+              </li>
+              <li>
+                <img src="https://images.unsplash.com/photo-1470646265479-7df7db525e21?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1489&q=80" alt="image1"/>
+                <div class="sb-description">
+                  <h2 style="color: black" >Unity in Diversity</h2>
+                </div>
+              </li>
+            </ul>
+
+            <div id="nav-arrows" class="nav-arrows">
+              <a href="#">Next</a>
+              <a href="#">Previous</a>
+            </div>
+          </div>
+          </div>
+        
+        
+      </div>
+  </div>
+      <br>
+      <br>
+
+      <div class = "container-fluid">
+          <div class="row">
+              <div class="col-sm-none col-md-2 col-lg-2 col-xl-2">
+              </div>
+      <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
+          <div class="card quote rounded border border-warning" style="background: linear-gradient(#ffd89b,#19547b);height: 23rem; " >
+      <div class="card-body cardedit">
+  <blockquote class="blockquote ">
+    <p class="d-flex align-self-center"></p>
+    
+<br>
+<p class="d-flex align-self-center">“Faster is fatal, slower is safe.”</p>
+    <footer class="blockquote-footer" style="color: black" >Amit Kalantri, Wealth of Words
+</footer>
+<br>
+<p class="d-flex align-self-center">“Bicycles are the most efficient vehicles on the planet, 50 times more efficient than cars, and twice as efficient as walking.”</p>
+    <footer class="blockquote-footer" style="color: black">Godo Stoyke
+</footer>
+
+  </blockquote>
+
+
+</div>
+</div>
+      </div>
+      
+      <div class="col-sm-12 sm-rounded col-md-4 col-lg-4 col-xl-4">
+          <figure class="figure">
+              <img class="figure-img img-fluid rounded border border-danger" src="https://engsw.b-cdn.net/wp-content/uploads/2017/05/C_caFWXVoAAcWi1.jpg">
+              <h3><figcaption class="figure-caption" style="color: black"  >WWE Superstars Promoting Public Transport</figcaption></h3>
+             </figure> 
+             </div>
+      <div class="col-sm-none col-md-1 col-lg-1 col-xl-1">
+
+      </div>
+          </div>
+        </div>      
+        <br><br>
+        <br><br>
+        <br><br>
+        
+        <div class="container-fluid">
+        <div class="row">
+    
+        <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 d-flex justify-content-around">
+   <div class="card" style="width: 18rem; height: 18rem; background: linear-gradient(#fceabb,#f8b500) ">
+      <div class="card-body">
+        <h5 class="card-title display-5 ">Rate Us</h5>
+        <h6 class="card-subtitle  text-muted display-5">Give your valuable feedback!</h6>
+        <p class="card-text h5 ">Your feedback helps us improve and helps us in giving you the best quality experience.</p>
+        <a href="#" class="card-link h4 ">Give Rating</a>
+        <a href="#" class="card-link h4">Leave a review</a>
+      </div>
+    </div>
+    </div>
+    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 d-flex justify-content-around">
+    <div class="card" style="width: 18rem;height: 18rem; background: linear-gradient(#fceabb,#f8b500) ">
+      <div class="card-body">
+        <h5 class="card-title display-5">Send an email</h5>
+        <h6 class="card-subtitle text-muted display-5">Report Issues!</h6>
+        <p class="card-text h5">You can report us the issues you face while using the website and help us improve.</p>
+        <a class="card-link h4" href="mailto:gotranspo2k19@gmail.com" data-component="link" data-source="inlineLink" data-type="internalLink" data-ordinal="1">Send an e-mail</a>
+        <a href="#" class="card-link h4">Send a message</a>
+      </div>
+    </div>
+    </div>
+
+    <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 d-flex justify-content-around">
+    <div class="card" style="width: 18rem;height: 18rem;background: linear-gradient(#fceabb,#f8b500) ">
+      <div class="card-body">
+        <h5 class="card-title display-5">About Us</h5>
+        <h6 class="card-subtitle text-muted display-5">Know more!</h6>
+        <p class="card-text h5">Get to know our company and know about how to get the oppurtunity of joining us.</p>
+        <a href="about" class="card-link h4">About Us</a>
+        <a href="#" class="card-link h4">Join Us</a>
+      </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    <br>
+    <br><br>
+    <br><br>
+    <br><br>
+    <br><br>
+    
+
+    <div class="d-flex justify-content-start">
+      <a id="goTopBtn" href="#"><i class="fas fa-arrow-up"></i></a>
+    <br>
+    <br>
+    
+    
+    
+<% include ./partials/footer %>    

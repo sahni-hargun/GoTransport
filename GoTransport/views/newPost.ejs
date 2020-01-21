@@ -1,0 +1,23 @@
+
+<% include ./partials/header %>
+
+
+<h1>New Post</h1>
+
+
+<form action="/user/<%= id %>/newPost" method="POST" class="form-group">
+<div class="form-group">
+    <label for="Name">Name</label>
+    <input type="text" class="form-control" name="post[name]" id="Name" placeholder="Post Name" required>
+</div>
+<div class="form-group">
+    <label for="Image">Image</label>
+    <input type="text" class="form-control" id="Image" name="post[image]" placeholder="Post Image" required>
+</div>
+<div class="form-group">
+<label for="exampleFormControlTextarea1">Description</label>
+<textarea class="form-control" name="post[description]" id="exampleFormControlTextarea1" rows="3" placeholder="Post Description" required></textarea>
+</div>
+<button type="submit" class="btn btn-primary">Submit</button>
+</div>
+</form>

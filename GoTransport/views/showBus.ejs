@@ -1,0 +1,84 @@
+<% include ./partials/header %>
+<link href="https://fonts.googleapis.com/css?family=Lexend+Deca&display=swap" rel="stylesheet">
+<style>
+body{
+    background:linear-gradient(#12D8FA,#A6FFCB);
+    font-size:20px;
+    font-family: 'Hepta Slab', serif;
+}
+
+.jumbotron{
+    font-family: 'Open Sans Condensed', sans-serif;
+    background:linear-gradient(#00F260,#0575E6);
+
+}
+.lead{
+    text-align: center;
+}
+
+.red {
+    color: red;
+}
+
+.green {
+    color:green;
+}
+
+.fas.fa-couch {
+    margin: 0 15px;
+}
+
+.lead {
+    color: bisque;
+}
+</style>
+
+<div style="width: 80%;margin: 0 auto;">
+<div class="container jumbotron">
+<h1 class="display-4">Bus Number <%= bus.number %></h1>
+<p class="lead">
+    Starting location = <%= bus.start.location %> &nbsp; Time <%= bus.start.time %>
+</p>
+<p class="lead">
+    Intermediate Stops = <% bus.via.forEach(function(via){ %>
+        <%= via %>,
+    <% }) %>
+</p>
+<p class="lead">
+    Ending location = <%= bus.end.location %> &nbsp; time <%= bus.end.time %>
+</p>
+<hr class="my-4" >
+<p class="lead">Total seats = <%= bus.seats.totalSeats %></p>
+<p class="lead">Available seats = <%= bus.seats.availableSeats %></p>
+<a class="btn btn-primary" style="margin-left: 43%;"  href="/showBus/<%= bus._id %>/route/<%= bus.number %>">Show Route</a>
+<a class="btn btn-warning" style="margin-left: 44%;" href="/showBus" style="color:blue;">Go Back</a>
+</div>
+</div>
+
+<div class="icons" style="width: 40%;margin: 0 auto">
+<div class="container border border-dark">
+    <% for(var i=0; i < 3; i++){ %>
+        <div class="row">
+        <% for(var j = i*5; j < (i+1)*5 - 3; j++){ %>
+            <a href="/showBus/<%= bus._id %>/<%= j %>">
+                <% if(bus.seats.seatsInfo[j].available == true){ %>
+                    <div class="col-sm-2 green"><i class="fas fa-couch"></i></div>
+                <% } else { %>
+                    <div class="col-sm-2 red"><i class="fas fa-couch" ></i></div>
+                <% } %>
+            </a>
+        <% } %>
+        <div class="col-sm-2"></div>    
+        <% for(var j = i*5 + 2; j < (i+1)*5; j++){ %>
+            <a href="/showBus/<%= bus._id %>/<%= j %>">
+                <% if( bus.seats.seatsInfo[j].available == true){ %>
+                    <div class="col-sm-2 green"><i class="fas fa-couch" ></i></div>
+                <% } else { %>
+                    <div class="col-sm-2 red"><i class="fas fa-couch"></i></div>
+                <% } %>
+            </a>
+        <% } %>
+        </div>    
+    <% } %>
+</div>
+</div>

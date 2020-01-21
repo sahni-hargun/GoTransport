@@ -1,0 +1,465 @@
+<% include ./partials/header %>
+
+<link href="https://fonts.googleapis.com/css?family=Kaushan+Script|Luckiest+Guy|Pacifico&display=swap" rel="stylesheet">
+
+<style>
+body{
+  background: linear-gradient(#FF5F6D,#FFC371);
+}
+
+</style>
+
+<div class="container-fluid text-center display-1" style="font-family: 'Pacifico', cursive;">Leaderboard</div>
+
+<div class="table-responsive">
+<table class="table" >
+        <thead class="thead-inverse display-4"  style="background: linear-gradient(#2C3E50,#FD746C);font-family: 'Kaushan Script', cursive;" >
+          <tr>
+            <th scope="col">Rank</th>
+            <th scope="col">User Name</th>
+            <th scope="col">Coins</th>
+          </tr>
+        </thead>
+        <tbody class="h3" style="color: rgba(223, 12, 12, 1.5);font-family: 'Luckiest Guy', cursive;" >
+
+            <% for(var i=0; i< users.length; i++){ %>
+
+                <tr>
+                        <th scope="row"><br><%= i+1 %></th>
+                        <td><br><%= users[i].username %></td>
+                        <td><br><%= users[i].coins %></td>
+                </tr>
+
+            <% } %>
+        </tbody>
+      </table>
+    </div>
+    </div>
+    <style>
+    /*--------------------------------------------------
+ // RESET
+---------------------------------------------------*/
+
+*, *:after, *:before {  
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+.clear:after {
+  clear: both;
+  content: "";
+  display: block;
+}
+.no-pointer {
+  cursor: default;
+}
+.last {
+  margin-right: 0px !important;
+}
+img, a, div, input, select, textarea {
+  outline: none;
+  border: none;
+}
+a {
+  text-decoration: none;
+  outline: none;
+  cursor: pointer;
+}
+.fx-mouse, a, button {
+  -webkit-transition: all 300ms ease-in-out;  
+  transition: all 300ms ease-in-out;
+}
+textarea {
+  resize: none
+}
+.hider, .mobile-visible, .slider-table {
+  display: none;
+}
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+  margin: 0px;
+  padding: 0px;
+  border: 0px;
+  border-collapse: separate;
+  border-spacing: 0px;
+  font-weight: inherit;
+  font-style: inherit;
+  font-size: 100%;
+  text-decoration: none;
+}
+/*--------------------------------------------------
+  // TEMPLATE
+---------------------------------------------------*/
+html, body {
+  width:100%;
+  height:100%;
+}
+html {
+  display:table;
+}
+body {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  background-color: #262B3A;
+}
+#wrapper {
+  width:100%;
+  /* max-width:800px; */
+  height:600px;
+  margin:auto;
+  overflow:hidden;
+}
+.frame, .row {
+  width: 100%;
+  height:100%;
+  float: left;
+  position:relative;
+}
+.frame {background-color: #262B3A;}
+
+/*--------------------------------------------------
+  // ILLUSTRATION
+---------------------------------------------------*/
+.illustration {
+  width:300px;
+  position:absolute;  
+  left:50%;
+  top:50%;
+  z-index:20;
+  margin-left:-150px;
+  margin-top:-150px;
+  
+  animation: body_move 6s ease 1s infinite;
+  -webkit-animation: body_move 6s ease 1s infinite;
+}
+@-webkit-keyframes body_move
+{
+25% { margin-top:-120px; }
+50% { margin-top:-170px; }
+75% { margin-top:-130px; }
+100% { margin-top:-150px; }
+}
+@keyframes body_move
+{
+25% { margin-top:-120px; }
+50% { margin-top:-170px; }
+75% { margin-top:-130px; }
+100% { margin-top:-150px; }
+}
+/*--------------------------------------------------
+  // PACMAN GHOST
+---------------------------------------------------*/
+
+.base-color {
+  background-color:#E53838;
+  
+  animation: body_color 8s ease 1s infinite;
+  -webkit-animation: body_color 8s ease 1s infinite;
+}
+@-webkit-keyframes body_color
+{
+25% { background-color:#EFB351; }
+50% { background-color:#72D6CC; }
+75% { background-color:#F9C5E2; }
+100% { background-color:#E53838; }
+}
+@keyframes body_color
+{
+25% { background-color:#EFB351; }
+50% { background-color:#72D6CC; }
+75% { background-color:#F9C5E2; }
+100% { background-color:#E53838; }
+}
+
+li.a-left, .eye-left { float:left; }
+li.a-right, .eye-right { float:right; }
+
+
+/*
+---------
+HEAD
+---------
+*/
+.row-head-ghost, .body-ghost, ul.ghost-foot {
+  text-align:center;
+  width:100%;
+  float:left;
+}
+.head-ghost {
+  height:22px;
+  display: block;
+  margin:0 auto;
+  clear:both;
+  width:100%;
+}
+.head-ghost.line1 {
+  max-width:80px;
+}
+.head-ghost.line2 {
+  max-width:168px;
+}
+.head-ghost.line3 {
+  max-width:212px;
+}
+.head-ghost.line4 {
+  height:44px;  
+  max-width:256px;
+}
+.wrap-eyes-ghost {
+  position:absolute;
+  width:212px;
+  height:110px;
+  top:-44px;
+  left:44px;
+}
+.eye-ghost {
+  width:88px;
+  height:110px;
+}
+.row-retina {
+  width:100%;
+  height:66px;
+  float:left;
+  position:relative;
+  margin:22px 0;
+  background-color:#FFF;
+}
+
+.row-retina:before, 
+.row-retina:after {
+  width:44px;
+  height: 22px;
+  left:22px;
+  position:absolute;
+  content: "";
+  background-color:#FFF;
+}
+.row-retina:before { top:-22px; }
+.row-retina:after { bottom:-22px; }
+
+.pupil-ghost {
+  width:44px;
+  height:44px;
+  background-color:#000;
+  position:absolute;
+  z-index:20;
+  bottom:-22px;
+  left:22px;
+  
+  animation: pupil-move 16s ease 1s infinite;
+  -webkit-animation: pupil-move 16s ease 1s infinite;
+}
+
+
+@keyframes pupil-move
+{
+15% { bottom:-22px; left:22px; }
+20% { bottom:44px;  left:22px; }
+30% { bottom:44px;  left:22px; }
+35% { bottom:0px; left:44px; }
+45% { bottom:0px; left:44px; }
+50% { bottom:0px; left:0px; }
+60% { bottom:0px; left:0px; }
+65% { bottom:22px;  left:44px; }
+75% { bottom:22px;  left:44px; }
+80% { bottom:22px;  left:0px; }
+90% { bottom:22px;  left:0px; }
+95% { bottom:-22px; left:22px; }
+}
+@-webkit-keyframes pupil-move
+{
+15% { bottom:-22px; left:22px; }
+20% { bottom:44px;  left:22px; }
+30% { bottom:44px;  left:22px; }
+35% { bottom:0px; left:44px; }
+45% { bottom:0px; left:44px; }
+50% { bottom:0px; left:0px; }
+60% { bottom:0px; left:0px; }
+65% { bottom:22px;  left:44px; }
+75% { bottom:22px;  left:44px; }
+80% { bottom:22px;  left:0px; }
+90% { bottom:22px;  left:0px; }
+95% { bottom:-22px; left:22px; }
+}
+
+/*
+---------
+BODY
+---------
+*/
+.body-ghost {
+  
+  height:170px;
+  position:relative;  
+}
+
+
+/*---------
+FOOT
+---------*/
+
+ul.ghost-foot {
+  list-style:none;
+}
+ul.ghost-foot li {
+  display:inline-block;
+  width:80px;
+}
+ul.ghost-foot li .line1, ul.ghost-foot li .line2 {
+  float:left;
+  clear:both;
+  display:block;
+  width:100%;
+  height:22px;
+}
+ul.ghost-foot li .line1 {
+  max-width:80px;
+}
+ul.ghost-foot li .line2 {
+  max-width:36px;
+  margin-left:22px;
+}
+
+/*--------------------------------------------------
+  // COOKIES
+---------------------------------------------------*/
+
+.wrapper-cookies {
+  position:absolute;
+  z-index:10;
+  width:100%;
+  height:44px;
+  top:50%;
+  margin-top:-11px;
+  overflow:hidden;
+}
+
+
+.row-cookies {
+  width:2000px;
+  float:left;
+  height:44px;
+  margin-left:0px;
+  
+  animation: move-cookies 8s linear 0s infinite;
+  -webkit-animation: move-cookies 8s linear 0s infinite;
+}
+
+@keyframes move-cookies
+{
+0% { margin-left:-2px; }
+100% { margin-left: -792px; }
+}
+@-webkit-keyframes move-cookies
+{
+0% { margin-left:-2px; }
+100% { margin-left: -792px; }
+}
+
+
+.wrap-cookies {
+  width:800px;
+  float:left;
+  text-align:center;
+}
+.cookie {
+  width:44px;
+  height:44px;
+  float:left;
+  position:relative;
+  margin:0 22px;
+  
+}
+.cookie:before, 
+.cookie:after {
+  position:absolute;
+  content: "";
+  background-color:#FFF;
+
+}
+.cookie:before { top:11px; left:0px; width:44px; height: 22px; }
+.cookie:after { top:0px; left:11px; width:22px; height: 44px; }</style>
+    <div id="wrapper"> 
+      <!-- START ILLUSTRATION -->
+      <div class="frame">
+        <div class="illustration">
+          <div class="row-head-ghost">
+          <div class="head-ghost base-color line1"></div>
+          <div class="head-ghost base-color line2"></div>
+          <div class="head-ghost base-color line3"></div>
+          <div class="head-ghost base-color line4"></div>
+          </div>
+          
+          
+          <div class="body-ghost base-color">
+            
+            <div class="wrap-eyes-ghost">
+            <div class="eye-ghost eye-left">
+              <div class="row-retina">
+                <div class="pupil-ghost"></div>
+              </div>
+            </div>
+            <div class="eye-ghost eye-right">
+              <div class="row-retina">
+                <div class="pupil-ghost"></div>
+              </div>
+            </div>
+            </div>
+            
+          </div>
+          
+          <ul class="ghost-foot">
+          
+          <li class="a-left">
+          <div class="base-color line1"></div>
+          <div class="base-color line2"></div>
+          </li>
+          
+          <li>
+          <div class="base-color line1"></div>
+          <div class="base-color line2"></div>
+          </li>
+          
+          <li class="a-right">
+          <div class="base-color line1"></div>
+          <div class="base-color line2"></div>
+          </li>
+          
+          </ul>
+          
+        </div>
+        
+        <div class="wrapper-cookies">
+        <div class="row-cookies">       
+        <div class="cookie"></div>
+        <div class="cookie"></div>
+        <div class="cookie"></div>
+        <div class="cookie"></div>
+        <div class="cookie"></div>
+        <div class="cookie"></div>
+        <div class="cookie"></div>
+        <div class="cookie"></div>
+        <div class="cookie"></div>
+        <div class="cookie"></div>
+        <div class="cookie"></div>
+        <div class="cookie"></div>
+        <div class="cookie"></div>
+        <div class="cookie"></div>
+        <div class="cookie"></div>
+        <div class="cookie"></div>
+        <div class="cookie"></div>
+        <div class="cookie"></div>
+        <div class="cookie"></div>    
+        </div>
+        </div>
+        
+      </div>
+      <!-- END ILLUSTRATION --> 
+      
+    </div>
+    <!-- END WRAPPER -->
+
+

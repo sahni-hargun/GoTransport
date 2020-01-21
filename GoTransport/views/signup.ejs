@@ -1,0 +1,41 @@
+<% include ./partials/header %>
+<style>
+    body{
+        background: linear-gradient(#FDC830,#F37335);
+    }
+</style>
+
+<h1 align="center" style="color: saddlebrown" >Sign Up</h1>
+<div class="row">
+    <!-- <h1 style="text-align: center">Sign Up</h1> -->
+
+    <div style="width: 30%; margin: 25px auto;">
+        <form action="/signup" method="POST">
+            <div class="form-group">
+                <input class="form-control" type="text" name="username" placeholder="username" required>
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="password" name="password" placeholder="password" required>
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="email" name="email" placeholder="email" required>
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="number" name="phoneNumber" placeholder="phone number" required>
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="url" name="image" placeholder="image" required>
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="date" name="dob" placeholder="date of birth" required>
+            </div>
+            <div class="form-group">
+                <textarea name="bio" id="" cols="80" rows="10" placeholder="bio" required></textarea>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-lg btn-primary btn-block">Sign Up!</button>
+            </div>
+        </form>
+        <a href="home.html">Go Back</a>
+    </div>
+</div>

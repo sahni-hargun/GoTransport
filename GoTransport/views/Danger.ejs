@@ -1,0 +1,20 @@
+
+
+
+
+<form action="javascript:sendMail();" name="pmForm" id="pmForm" method="post">
+
+    <input value="gotranspo2k19@gmail.com" name="pmSubject" id="pmSubject" type="text" maxlength="64" style="width:98%;">
+    <input name="pmSubmit" type="submit" value="Send">
+</form>
+
+<!-- <a href="mailto:gotranspo2k19@gmail.com" data-component="link" data-source="inlineLink" data-type="internalLink" data-ordinal="1">Send an e-mail</a> -->
+
+
+
+<script>
+        function sendMail()
+        {
+            window.open('mailto:test@example.com?subject=I am in Danger&body=I am sending you my location. My current latitude is <%= lat %> and longitude is <%= lng %>');
+        }
+    </script>

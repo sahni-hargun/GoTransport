@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>GoTransport</title>
+  <link rel="icon" href="/images/logo.png" type = "image/x-icon">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+  <link rel="stylesheet" type="text/css" href="/app.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" type="text/javascript"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<style>
+  .sb-slider {
+    margin: 10px auto;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    list-style-type: none;
+    padding: 0;
+  }
+
+  .sb-slider li {
+    margin: 0;
+    padding: 0;
+    display: none;
+  }
+
+  .sb-slider li > a {
+    outline: none;
+  }
+
+  .sb-slider li > a img {
+    border: none;
+  }
+
+  .sb-slider img {
+    max-width: 100%;
+    display: block;
+  }
+
+  .sb-description {
+    padding: 20px;
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+    z-index: 1000;
+    position: absolute;
+    background: #CBBFAE;
+    background: rgba(190,176,155, 0.4);
+    border-left: 4px solid rgba(255,255,255,0.7);
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    filter: alpha(opacity=0); 
+    opacity: 0;
+    color: #fff;
+
+    -webkit-transition: all 200ms;
+    -moz-transition: all 200ms;
+    -o-transition: all 200ms;
+    -ms-transition: all 200ms;
+    transition: all 200ms;
+  }
+
+  .sb-slider li.sb-current .sb-description {
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+    filter: alpha(opacity=80);  
+    opacity: 1;
+  }
+
+  .sb-slider li.sb-current .sb-description:hover {
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=99)";
+    filter: alpha(opacity=99);  
+    background: rgba(190,176,155, 0.7);
+  }
+
+  .sb-perspective {
+    position: relative;
+  }
+
+  .sb-perspective > div {
+    position: absolute;
+
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    -o-transform-style: preserve-3d;
+    -ms-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+
+    -webkit-backface-visibility : hidden;
+    -moz-backface-visibility : hidden;
+    -o-backface-visibility : hidden;
+    -ms-backface-visibility : hidden;
+    backface-visibility : hidden;
+  }
+
+  .sb-side {
+    margin: 0;
+    display: block;
+    position: absolute;
+
+    -moz-backface-visibility : hidden;
+
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    -o-transform-style: preserve-3d;
+    -ms-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+  }
+
+
+  /* custom style */
+  .container {
+    margin: 30px;
+  }
+
+  .shadow {
+    width: 100%;
+    height: 168px;
+    position: relative;
+    margin-top: -110px;
+    background: transparent url(https://tympanus.net/Development/Slicebox/images/shadow.png) no-repeat bottom center;
+    background-size: 100% 100%; /* stretches it */
+    z-index: -1;
+    display: none;
+  }
+
+  .sb-description h3 {
+    font-size: 20px;
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
+  }
+
+  .sb-description h3 a {
+    color: #4a3c27;
+    text-shadow: 0 1px 1px rgba(255,255,255,0.5);
+  }
+
+  .nav-arrows {
+    display: none;
+  }
+
+  .nav-arrows a {
+    width: 42px;
+    height: 42px;
+    background: #cbbfae url(https://tympanus.net/Development/Slicebox/images/nav.png) no-repeat top left;
+    position: absolute;
+    top: 50%;
+    left: 2px;
+    text-indent: -9000px;
+    cursor: pointer;
+    margin-top: -21px;
+    opacity: 0.9;
+    border-radius: 50%;
+    box-shadow: 0 1px 1px rgba(255,255,255,0.8);
+  }
+
+  .nav-arrows a:first-child{
+    left: auto;
+    right: 2px;
+    background-position: top right;
+  }
+
+  .nav-arrows a:hover {
+    opacity: 1;
+  }
+
+  .nav-dots {
+    text-align: center;
+    position: absolute;
+    bottom: -5px;
+    height: 30px;
+    width: 100%;
+    left: 0;
+    display: none;
+  }
+
+  .nav-dots span {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    margin: 3px;
+    background: #cbbfae;
+    cursor: pointer;
+    box-shadow: 
+      0 1px 1px rgba(255,255,255,0.6), 
+      inset 0 1px 1px rgba(0,0,0,0.1);
+  }
+
+  .nav-dots span.nav-dot-current {
+    box-shadow: 
+      0 1px 1px rgba(255,255,255,0.6), 
+      inset 0 1px 1px rgba(0,0,0,0.1), 
+      inset 0 0 0 3px #cbbfae,
+      inset 0 0 0 8px #fff;
+  }
+
+  .nav-options {
+    width: 70px;
+    height: 30px;
+    position: absolute;
+    right: 70px;
+    bottom: 0px;
+    display: none;
+  }
+
+  .nav-options span {
+    width: 30px;
+    height: 30px;
+    background: #cbbfae url(https://tympanus.net/Development/Slicebox/images/options.png) no-repeat top left;
+    text-indent: -9000px;
+    cursor: pointer;
+    opacity: 0.7;
+    display: inline-block;
+    border-radius: 50%;
+  }
+
+  .nav-options span:first-child{
+    background-position: -30px 0px;
+    margin-right: 3px;
+  }
+
+  .nav-options span:hover {
+    opacity: 1;
+  }</style>
+<link rel="stylesheet" href="https://tympanus.net/Development/Slicebox/css/demo.css">
+
+</head>
+<body>
+
+<div class="navcolour">
+<nav class="d-flex justify-content-center navbar navbar-expand-lg navbar-light border border-warning" style="background: linear-gradient(#43C6AC,#F8FFAE)">
+    <img src="/images/logo.png" class="d-flex justify-content-center" id="logoinnavbar">
+<a class="d-flex justify-content-center navbar-brand"style="font-size: 1.5rem" href="/home">GoTransport</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span ><span class="join">JOIN</span></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+  <ul class="navbar-nav">
+    <% if(!currentUser){ %>
+      <li class="nav-item">
+        <a class="d-flex justify-content-center nav-link " style="font-size: 1.5rem" href="login">Login <i class="fa fa-user"></i></a>
+      </li>
+      </li>
+      <li class="nav-item">
+        <a class="d-flex justify-content-center nav-link"style="font-size: 1.5rem" href="signup">SignUp <i class="fa fa-user-plus"></i></a>
+      </li> 
+      <% } else { %>
+      <li><a class="d-flex justify-content-center nav-link" href="/user/<%= currentUser._id %>">Signed In As <%= currentUser.username %></a></li>
+                        <li><a class="d-flex justify-content-center nav-link" href="/logout">Logout</a></li>
+                    <% } %> 
+    </ul>
+  </div>
+</nav>
+</div>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light ">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-center " style="background: linear-gradient(#fceabb,#f8b500);" id="navbarNavAltMarkup">
+      <div class="nav nav-tabs navbar-nav">
+        <li class="nav-item">
+        <a class="nav-link" href="/getLocation">Location Tracker</a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link" href="/searchLocation">Safe Zones</a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link" href="/showBus">Route Tracing</a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link" href="/sos">SOS</a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-item nav-link" target="_blank" href="https://www.esri.com/library/brochures/pdfs/transportation-infrastructure.pdf">Geographic Information System</a>
+        </li>
+      </div>
+    </div>
+    </nav> 
+
+<ul class="nav nav-tabs justify-content-center">
+<li class="nav-item">
+  <a class="nav-link active" href="/home">Home</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/socialPosts">Social Posts</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/circular">Notices</a>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="/awareness">Awareness</a>
+</li>
+</ul>
+
+  <script type="text/javascript">
+  $(document).ready(function(){
+  $('ul li a').click(function(){
+    $('li a').removeClass("active");
+    $(this).addClass("active");
+});
+});
+</script> 

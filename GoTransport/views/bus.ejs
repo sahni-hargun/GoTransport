@@ -1,0 +1,60 @@
+<% include ./partials/header %>
+<link href="https://fonts.googleapis.com/css?family=Hepta+Slab&display=swap" rel="stylesheet">
+
+
+ <style>
+     body{
+    background:linear-gradient(#a8ff78,#78ffd6);
+    font-size:20px;
+    font-family: 'Hepta Slab', serif;
+     }
+
+     .jumbotron{
+         background: linear-gradient(#76b852,#8DC26F);
+         font-size:20px;
+    font-family: 'Hepta Slab', serif;
+    
+     }
+     
+
+ </style>
+ <br>
+<div class="jumbotron jumbotron-fluid">
+        <div class="container">
+          <h1 class="display-4" style="color:black;">Routes of all buses</h1>
+        </div>
+      </div>
+<br>
+<table class="table table-striped">
+<thead>
+    <tr>
+    <th scope="col">Bus Number</th>
+    <th scope="col">Start Location</th>
+    <th scope="col">Via</th>
+    <th scope="col">End Location</th>
+    <th scope="col">Total Seats</th>
+    <th scope="col">Available Seats</th>
+    </tr>
+</thead>
+<tbody>
+    <% buses.forEach(function(bus){ %>
+        <tr>
+        <th scope="row"><a href="/showBus/<%=bus._id%>"><%= bus.number %></a></th>
+        <td><%= bus.start.location %> ( 
+        <%= bus.start.time %> )</td>
+        <td>
+            <ol>
+            <% bus.via.forEach(function(via){ %>
+                <li><%= via %></li>
+            <% }) %>
+            </ol>
+        </td>
+        <td><%= bus.end.location %> ( 
+        <%= bus.end.time %> )</td>
+        <td><%= bus.seats.totalSeats %></td>
+        <td><%= bus.seats.availableSeats %></td>
+        </tr>    
+    <% }) %>
+</tbody>
+</table>
+

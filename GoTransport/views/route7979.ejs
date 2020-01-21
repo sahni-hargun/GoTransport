@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html> 
+<head> 
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" /> 
+  <title>Google Maps Multiple Markers</title> 
+  <script src="http://maps.google.com/maps/api/js?sensor=false" 
+          type="text/javascript"></script>
+</head> 
+<body>
+    <a href="/showBus/<%= bus._id %>">Go Back</a>
+  <div id="map" style="width: 1000px; height: 1000px;"></div>
+  
+</body>
+
+  <script type="text/javascript">
+    var locations = [
+      ['Tilak Nagar', 28.6389,77.0867, 1],
+      ['Ganesh Nagar Check Post', 28.6345,151.198376, 2],
+      ['Janak Puri East', 28.6330,77.0867, 3],
+      ['District Center', 28.6296,77.0802, 4],
+      ['Dholi Piao', 28.6291,77.0766, 5],
+      ['Vikas Puri', 28.6386, 77.0721, 6],
+      ['Uttam Nagar Terminal', 28.6252, 77.0658, 7],
+      ['Prem Nagar', 22.9569, 82.7010, 8],
+      ['Om Vihar', 28.6186, 77.0521, 9],
+      ['Kiran Garden', 28.6195, 77.0467, 10],
+    ];
+
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 14,
+      center: new google.maps.LatLng(28.6248, 77.0653),
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    });
+
+    var infowindow = new google.maps.InfoWindow();
+
+    var marker, i;
+
+    for (i = 0; i < locations.length; i++) {  
+      marker = new google.maps.Marker({
+        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+        map: map
+      });
+
+      google.maps.event.addListener(marker, 'click', (function(marker, i) {
+        return function() {
+          infowindow.setContent(locations[i][0]);
+          infowindow.open(map, marker);
+        }
+      })(marker, i));
+    }
+  </script>
+
+</html>

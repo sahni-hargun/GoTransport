@@ -1,0 +1,22 @@
+<%# <form action="/geolocation" method="GET">
+    <input type="text" name="ip">
+</form> %>
+
+<!DOCTYPE HTML>
+<html>
+<head>
+    
+</head> 
+
+
+<body style="background: linear-gradient(#3CA55C,#B5AC49)" >
+
+       
+ <script>
+     alert("Enter the IP on the Next Prompt!!");
+ var ip = prompt("Enter Ip");
+ var url = "/geolocation?ip=" + ip;
+ window.location.href = url;
+ </script>
+</body>
+</html>

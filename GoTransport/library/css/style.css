@@ -1,0 +1,61 @@
+/* #login {
+	width: 224px;
+	height: 224px;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+}
+
+#scan {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	margin: auto;
+	padding: 35px;
+}
+
+#result {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	margin: auto;
+	padding: 35px;
+}
+
+.qr-code-data {
+	color: blue;
+}
+
+#scan video,
+#scan canvas {
+	box-shadow: 0 0 1px blue;
+}
+
+#scan video:hover,
+#scan canvas:hover {
+	box-shadow: 0 0 5px blue;
+}
+
+#login_form {
+	border: 1px solid gray;
+	box-shadow: 0 0 2px blue;
+	text-align: right;
+}
+
+#login_form>div {
+	margin: 15px;
+}
+
+#login_form input,
+button {
+	padding: 10px;
+}
+
+#login_form button {
+	border: none;
+	background-color: green;
+	color: white;
+} */

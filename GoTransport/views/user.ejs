@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>User Home Page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+    <!-- <link rel="stylesheet" type="text/css" href="/public/ash.css"> -->
+    <style>
+    body {
+    background: #2f585f;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #ffd194, #70e1f5);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #ffd194, #70e1f5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+#mainContainer {
+    margin-top: 80px;
+}
+
+.container {
+    max-width: 60rem;
+}
+
+.jumbotron {
+    background-color: inherit ;
+}
+
+.list-group-item {
+    background: #e9ecef;
+    margin: 1%;
+}
+
+.list-group-item.active {
+    background: #70e1f5;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #ffd194, #70e1f5);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #ffd194, #70e1f5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    transition: background 500ms;
+    color: black;
+}
+
+.well {
+    min-height: 20px;
+    padding: 19px;
+    margin-bottom: 20px;
+    background: #e9ecef;
+    border: 1px solid #e3e3e3;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .05);
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, .05);
+  }
+  .well blockquote {
+    border-color: #ddd;
+    border-color: rgba(0, 0, 0, .15);
+  }
+  .well-lg {
+    padding: 24px;
+    border-radius: 6px;
+  }
+  .well-sm {
+    padding: 9px;
+    border-radius: 3px;
+  }
+
+#right {
+    margin-left: 2rem;
+}
+
+.navbar.scrolled {
+    background: #70e1f5;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #ffd194, #70e1f5);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #ffd194, #70e1f5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+@media screen and (max-width: 992px) {
+
+    .container {
+        max-width: 45rem;
+    }
+
+
+}
+
+@media screen and (max-width: 768px) {
+
+    .container {
+        max-width: 30rem;
+    }
+
+
+}
+
+@media screen and (max-width: 576px) {
+
+    .container {
+        /* max-height: 100px; */
+        max-width: 20rem;
+    }
+
+
+}
+    </style>
+</head>
+<body>
+
+    <nav id="mainNavbar" class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+            <a class="navbar-brand" href="#"><i class="fas fa-user-tie"></i> <%= user.username %></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                        
+                <li class="nav-item active">
+                    <a class="nav-link" href="/home"><i class="fas fa-bus-alt"></i> Go Transport <span class="sr-only">(current)</span></a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="/user/<%= user._id %>/qr" ><i class="fas fa-qrcode"></i> QR Code Scanner</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/leaderboard"><i class="fas fa-clipboard-list"></i> Leader Board</a>
+                </li>
+                <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-taxi"></i> 
+                    Book a Cab
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="https://book.olacabs.com/" target="_blank"><img class="logo" alt="Olacabs Logo" srcset="https://olawebcdn.com/images/v1/logos/olalogo.png 1x, https://olawebcdn.com/images/v1/logos/olalogo@2x.png 2x, https://olawebcdn.com/images/v1/logos/olalogo@3x.png 3x" src="https://olawebcdn.com/images/v1/logos/olalogo.png"></a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="https://www.uber.com/in/en/ride/" targe="_blank"><img style="width: 50%;" class="logo img-fluid" alt="Uber Logo" src="data:image/png;base64,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"></a>
+                </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/user/<%= user._id %>/settings"><i class="fas fa-user-cog"></i> Settings</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout"><i class="fas fa-sign-out-alt"></i> Log Out</a>
+                </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div id="mainContainer" class="container">
+        <div class="jumbotron jumbotron-fluid row">
+                <div class="col-md-4">
+                    <img class="img-fluid" src="<%= user.image %>" alt="">
+                </div>
+                <div class="col-md-8">
+                    <div class="display-4 text-center"><%= user.username %></div>
+                    <div class="display-5 text-center"><%= user.email %></div>
+                    <div class="display-5 text-center"><%= user.phoneNumber %></div>
+                    <div class="display-5 text-center"><%= user.dob %></div>
+                    <div class="lead text-center"><%= user.bio %></div>
+                </div>
+        </div>
+
+    <div class="row">
+
+        <div class="well col-sm-4"> 
+            <p class="lead text-center"><i class="fas fa-coins"></i> Coins</p>
+            <hr>
+            <p class="lead text-center"><%= user.coins %></p>
+        </div>
+
+        <div class="col-sm-1"></div>
+
+        <div class="well col-sm-7">
+
+            <p class="lead text-center"><i class="far fa-address-card"></i> Posts</p>
+            <hr>
+
+            <ul class="list-group">
+
+            <li class="list-group-item">
+                <a href="/user/<%= user._id %>/newPost" class="btn btn-lg text-center lead">New Post +</p>
+            </li>
+
+            <% if(user.Post.length == 0) {%>
+
+            <li class="list-group-item">
+                <p class="text-center lead">Your Posts Will Look Like This</p>
+            </li>
+            <li class="list-group-item active">
+                <div class="card" style="width: inherit;">
+                <img src="data:image/jpeg;base64,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" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title text-center lead">Post Title</h5>
+                    <p class="card-text text-justify lead">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corporis, tempore!</p>
+                    <a href="#" class="btn btn-outline-danger">Delete</a>
+                </div>
+                </div>
+            </li>
+
+            <% } else { %>
+
+                <% user.Post.forEach(function(data){ %>
+                <li class="list-group-item">
+                <div class="card" style="width: inherit;">
+                <img src="<%= data.image %>" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title text-center lead"><%= data.name %></h5>
+                    <p class="card-text text-justify lead"><%= data.description %></p>
+                    <form action="/user/<%= user._id %>/delete/<%= data._id %>?_method=DELETE" method="POST">
+                    <button class="btn btn-outline-danger">Delete</button>
+                    </form>
+                </div>
+                </div>
+            </li>
+                <% }) %>
+                <% } %>
+        </div>
+
+    </div>
+
+    </div>
+
+    <!-- CHATBOT -->
+    <script src="https://static.landbot.io/landbot-widget/landbot-widget-1.0.0.js"></script>
+    <script>
+    var myLandbot = new LandbotLivechat({
+        index: 'https://landbot.io/u/H-237423-JDZ9NF3IRHYPWXAN/index.html',
+    });
+    </script>
+    <!-- CHATBOT END -->
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+<!--     <script>
+        $(".list-group").on("click", ".list-group-item", function(){
+            $(".list-group-item").removeClass("active");
+            $(this).toggleClass("active");
+        });
+
+        $(function () {
+            $(document).scroll(function () {
+                var $nav = $("#mainNavbar");
+                $nav.toggleClass("scrolled", $(this).scrollTop() > $nav.height());
+            });
+        });
+    </script> -->
+
+</body>
+</html>

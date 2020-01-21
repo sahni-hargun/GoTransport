@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html> 
+<head> 
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" /> 
+  <title>Google Maps Multiple Markers</title> 
+  <script src="http://maps.google.com/maps/api/js?sensor=false" 
+          type="text/javascript"></script>
+</head> 
+<body>
+    <a href="/showBus/<%= bus._id %>">Go Back</a>
+  <div id="map" style="width: 1000px; height: 1000px;"></div>
+</body>
+
+  <script type="text/javascript">
+    var locations = [
+      ['Kakrola Bridge', 28.5994055,77.027653, 1],
+      ['Sainik Enclave', 28.6140,77.0050, 2],
+      ['Rajiv Ratan Awas', 28.6410, 77.0215, 3],
+      ['Baprola Village', 28.6409, 77.0114, 5],
+      ['Baprola School', 28.6383, 77.0079, 6],
+      ['Air Force Station', 28.5951, 77.2058, 7],
+      ['Jai Vihar', 28.6399, 77.0017, 8],
+      ['Nirmal Vihar', 28.6350, 77.2872, 10],
+    ];
+
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 13,
+      center: new google.maps.LatLng(28.6383, 77.0079),
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    });
+
+    var infowindow = new google.maps.InfoWindow();
+
+    var marker, i;
+
+    for (i = 0; i < locations.length; i++) {  
+      marker = new google.maps.Marker({
+        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+        map: map
+      });
+
+      google.maps.event.addListener(marker, 'click', (function(marker, i) {
+        return function() {
+          infowindow.setContent(locations[i][0]);
+          infowindow.open(map, marker);
+        }
+      })(marker, i));
+    }
+  </script>
+
+</html>
