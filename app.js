@@ -13,7 +13,7 @@ var seedDB      = require("./seeds");
 var request = require("request");
 const MongoClient = require('mongodb').MongoClient;
 // Relace with your own username, password and MongoDb cluster link.
-const uri = "your own link";
+const uri = "mongodb+srv://SINGHHR:ayush123@cluster0-zq4ke.mongodb.net/test?retryWrites=true&w=majority";
 const client = new MongoClient(uri, { useNewUrlParser: true });
 client.connect(err => {
   const collection = client.db("test").collection("devices");
@@ -21,7 +21,7 @@ client.connect(err => {
 });
 app.use(bodyparser.urlencoded({extended  : true}));
 // Replace with your own link.
-mongoose.connect("your own link", {useNewUrlParser: true});
+mongoose.connect("mongodb+srv://SINGHHR:ayush123@cluster0-zq4ke.mongodb.net/test?retryWrites=true&w=majority", {useNewUrlParser: true});
 mongoose.set("useFindAndModify", false);
 app.set("view engine", "ejs");
 app.use(express.static("public"));
