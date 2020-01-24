@@ -54,6 +54,8 @@ git pull https://github.com/hargun79/GoTransport.git master
 ```
 Manage any merge conflicts, commit them, and then push them to your fork.
 
+Next, open the app.js file and on line no. 16 and 24 replace with your own MongoDb cluster link.
+
 To setup all node modules, in the terminal run:
 ```
 npm install
