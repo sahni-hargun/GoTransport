@@ -1,7 +1,9 @@
+Link: https://gotransport.herokuapp.com
+
+Presentation Link: https://gotransport.netlify.com 
+
 # GoTransport
 > It is a web application that makes the life of people using public transport easier.
-
-Link: https://gotransport.herokuapp.com
 
 ## Features of our WebApp: 
 
