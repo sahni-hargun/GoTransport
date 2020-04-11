@@ -1,13 +1,17 @@
-
-  <div class="footer" style="background: linear-gradient(#43C6AC,#F8FFAE)">
-   
-    <a href="https://facebook.com"><img class="facebook" src="/images/fb.png"></a>
+<div class="footer" style="background: linear-gradient(#43C6AC,#F8FFAE)">   
+ <a href="https://facebook.com"><img class="facebook" src="/images/fb.png"></a>
  <a href="https://youtube.com"><img class="youtube" src="/images/youtube.png"></a>
  <a href="https://twitter.com"><img class="twitter" src="/images/twitter.png"></a>
  <a href="https://in.linkedin.com"><img class="linkedin" src="/images/linkedin.png"></a>
  <a href="https://instagram.com"><img class="instagram" src="/images/instagram.png"></a>
  <p>© 2019 GoTransport</p>
-  </div>
+</div>
+<style>
+ .footer{
+  bottom : 0;
+  position : relative;
+ }
+</style>
  <!-- CHATBOT -->
  <script src="https://static.landbot.io/landbot-widget/landbot-widget-1.0.0.js"></script>
  <script>
@@ -23,78 +27,5 @@
  
      <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
      <script src="https://tympanus.net/Development/Slicebox/js/jquery.slicebox.js"></script>
-     <script>
-     $(function() {
-             
-             var Page = (function() {
-               
-               var $navArrows = $( '#nav-arrows' ).hide(),
-                   $shadow = $( '#shadow' ).hide(),
-                   slicebox = $( '#sb-slider' ).slicebox( {
-                     onReady : function() {
-                       
-                       $navArrows.show();
-                       $shadow.show();
-                       
-                     },
-                     orientation : 'r',
-                     cuboidsRandom : true,
-                     disperseFactor : 30
-                   } ),
-                   
-                   init = function() {
-                     
-                     initEvents();
-                     
-                   },
-                   initEvents = function() {
-                     
-                     // add navigation events
-                     $navArrows.children( ':first' ).on( 'click', function() {
-                       
-                       slicebox.next();
-                       return false;
-                       
-                     } );
-                     
-                     $navArrows.children( ':last' ).on( 'click', function() {
-                       
-                       slicebox.previous();
-                       return false;
-                       
-                     } );
-                     
-                   };
-               
-               return { init : init };
-               
-             })();
-             
-             Page.init();
-             
-           });
-           
-           </script>
-           	<script>
-	
-              var byline = document.getElementById('byline');  	// Find the H2
-              bylineText = byline.innerHTML;										// Get the content of the H2
-              bylineArr = bylineText.split('');									// Split content into array
-              byline.innerHTML = '';														// Empty current content
-              
-              var span;					// Create variables to create elements
-              var letter;
-              
-              for(i=0;i<bylineArr.length;i++){									// Loop for every letter
-                span = document.createElement("span");					// Create a <span> element
-                letter = document.createTextNode(bylineArr[i]);	// Create the letter
-                if(bylineArr[i] == ' ') {												// If the letter is a space...
-                  byline.appendChild(letter);					// ...Add the space without a span
-                } else {
-                  span.appendChild(letter);						// Add the letter to the span
-                  byline.appendChild(span); 					// Add the span to the h2
-                }
-              }
-              </script>
  </body>
  </html>
