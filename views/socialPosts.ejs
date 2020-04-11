@@ -1,21 +1,42 @@
 <% include ./partials/header %>
 
+<div class="flex">
 <ul class="list-group">
         <% users.forEach(function(user){ %>
         <br>
         <% user.Post.forEach(function(data){ %>
+        <div class="flex">
         <li class="list-group-item">
                 <div class="card" style="width: inherit;">
                 <img src="<%= data.image %>" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <h5 class="card-title text-center lead"><%= data.name %> <strong>By</strong> <%=user.username%></h5>
+                    <h5 class="card-title text-center lead"><%= data.name %> By <%=user.username%></h5>
                     <p class="card-text text-justify lead"><%= data.description %></p>
                 </div>
                 </div>
             </li>
+            </div>
         <br>
         <% }) %>
         <% }) %>
+</ul>
+</div>
 
-        </ul>
+<style>
 
+  .card-img-top{
+   height: 300px;
+   width: 300px;
+  }
+
+ .list-group-item{
+  display: flex;
+  flex-wrap: wrap;
+  flex-basis: 50%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+ }
+</style>
+
+<% include ./partials/footer %>
