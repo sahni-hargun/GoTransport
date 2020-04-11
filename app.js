@@ -28,8 +28,6 @@ app.use(express.static("public"));
 app.use(express.static("./library"));
 app.use(methodOverride('_method'));
 
-seedDB();
-
 // PASSPORT CONFIGURATION
 app.use(require("express-session")({
     secret: "Once again Rusty wins cutest dog!",
