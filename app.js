@@ -28,6 +28,8 @@ app.use(express.static("public"));
 app.use(express.static("./library"));
 app.use(methodOverride('_method'));
 
+//seedDB();
+
 // PASSPORT CONFIGURATION
 app.use(require("express-session")({
     secret: "Once again Rusty wins cutest dog!",
@@ -105,12 +107,21 @@ app.get("/sos", function(req, res){
 	res.render("SOS");
 })
 
-app.get("/loc", function(req, res){
-	var lat = req.query.lat;
-	var lng = req.query.lng;
-	var url = 'mailto:gotranspo2k19@gmail.com?subject=I am in Danger&body=I am sending you my location. My current latitude is ' + lat + ' and longitude is ' + lng;
-	res.redirect(url);
+app.get('*', function(req, res,next){
+    res.locals.user = req.user || null;
+    next();
 })
+
+app.get("/loc", isLoggedIn, function(req, res) {
+      var lat = req.query.lat;
+      var lng = req.query.lng;
+      var url =
+    "mailto:" + req.user.emergencyContactEmail + "?subject=I am in Danger&body=I am sending you my location. My current latitude is " +
+    lat +
+    " and longitude is " +
+    lng;
+      res.redirect(url);
+});
 
 // =======================
 // BUS
@@ -202,29 +213,26 @@ app.get("/signup",function(req,res){
 	res.render("signup");
 });
 
-app.post("/signup",function(req,res){
-	var newUser = new User(
-		{
-			username: req.body.username,
+app.post("/signup", function(req, res) {
+  var newUser = new User({
+    username: req.body.username,
     dob: req.body.dob,
     email: req.body.email,
     bio: req.body.bio,
     image: req.body.image,
-    phoneNumber: req.body.phoneNumber
-			
-		}
-	)
-	User.register(newUser, req.body.password, function(err, user){
-		if(err){
-			console.log(err);
-			return res.render("signup");
-		}
-		passport.authenticate("local")(req, res, function(){
-			res.redirect("/home");
-		});
-		});
+    phoneNumber: req.body.phoneNumber,
+    emergencyContactEmail: req.body.emergencyContactEmail
+  });
+  User.register(newUser, req.body.password, function(err, user) {
+    if (err) {
+      console.log(err);
+      return res.render("signup");
+    }
+    passport.authenticate("local")(req, res, function() {
+      res.redirect("/home");
+    });
+  });
 });
-
 
 
 app.get("/logout", function(req, res){
@@ -313,31 +321,30 @@ app.get("/user/:id", function(req, res){
 	})
 })
 
-app.put("/user/:id", function(req, res){
-	var updatedUser = {
-		username: req.body.username,
-		password: req.body.password,
-		email: req.body.email,
-		bio: req.body.bio,
-		image: req.body.image,
-		phoneNumber: req.body.phoneNumber
+app.put("/user/:id", isLoggedIn, function(req, res) {
+  var updatedUser = {
+    username: req.body.username,
+    password: req.body.password,
+    email: req.body.email,
+    bio: req.body.bio,
+    image: req.body.image,
+    phoneNumber: req.body.phoneNumber,
+    emergencyContactEmail: req.body.emergencyContactEmail
+  };
 
-	}
+  User.findByIdAndUpdate(req.params.id, updatedUser, function(err, foundUser) {
+    if (err) {
+      console.log(err);
+    } else {
+      var showUrl = "/user/" + foundUser._id;
+      foundUser.save();
+      res.redirect(showUrl);
+    }
+  });
+});
 
-	User.findByIdAndUpdate(req.params.id, updatedUser,  function(err, foundUser){
-		if(err){
-			console.log(err);
-		}
-		else {
-		  var showUrl = "/user/" + foundUser._id;
-		  foundUser.save();
-		  res.redirect(showUrl);
-		}
-	});
 
- });
-
-app.get("/user/:id/settings", function(req, res){
+app.get("/user/:id/settings", isLoggedIn, function(req, res){
 	User.findById(req.params.id, function(err, foundUser){
 		if(err){
 			console.log(err);
@@ -349,7 +356,7 @@ app.get("/user/:id/settings", function(req, res){
 });
 
 
-app.get("/user/:id/qr",function(req,res){
+app.get("/user/:id/qr",isLoggedIn, function(req,res){
 	var userId = req.params.id;
 
 	User.findById(userId, function(err, foundUser){
@@ -364,7 +371,7 @@ app.get("/user/:id/qr",function(req,res){
 	})
 });
 
-app.get("/user/:id/payment/:code", function(req, res){
+app.get("/user/:id/payment/:code", isLoggedIn, function(req, res){
 	var userId = req.params.id;
 	var qrCode = req.params.code;
 
@@ -383,12 +390,12 @@ app.get("/user/:id/payment/:code", function(req, res){
 	})
 })
 
-app.get("/user/:id/newPost",function(req,res){
+app.get("/user/:id/newPost",isLoggedIn, function(req,res){
 	var userId = req.params.id;
 	res.render("newPost" , {id: userId});
 });
 
-app.post("/user/:id/newPost",function(req,res){
+app.post("/user/:id/newPost",isLoggedIn, function(req,res){
 	var url;
 	var userId = req.params.id;
 
@@ -419,7 +426,7 @@ app.post("/user/:id/newPost",function(req,res){
 	})
 });
 
-app.delete("/user/:userid/delete/:postid", function(req, res){
+app.delete("/user/:userid/delete/:postid", isLoggedIn, function(req, res){
 	var userId = req.params.userid;
 	var postId = req.params.postid;
 	var index;
@@ -449,7 +456,7 @@ app.delete("/user/:userid/delete/:postid", function(req, res){
 	})
 })
 
-app.post("/user/:id/payment/:coin", function(req,res){
+app.post("/user/:id/payment/:coin", isLoggedIn, function(req,res){
 	var id = req.params.id;
 	var payment = req.params.coin;
 	var temp = 0;
@@ -480,7 +487,7 @@ app.post("/user/:id/payment/:coin", function(req,res){
 	})
 });
 
-app.get("/leaderboard",function(req,res){
+app.get("/leaderboard",isLoggedIn, function(req,res){
 	User.find({}, function(err, foundUsers){
 		if(err){
 			console.log(err);
@@ -521,5 +528,5 @@ app.get("/about",function(req,res){
 });
 
 app.listen(process.env.PORT || 3000,function(req,res){
-console.log("Start");
+console.log("Server Started");
 })

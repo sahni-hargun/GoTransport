@@ -10,6 +10,7 @@ var UserSchema = new mongoose.Schema({
     coins: {type: Number, default: 0},
     image: String,
     phoneNumber: Number,
+    emergencyContactEmail: String,
     Post: [
         {
         type: mongoose.Schema.Types.ObjectId,

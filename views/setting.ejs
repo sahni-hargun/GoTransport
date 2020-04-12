@@ -21,10 +21,7 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="/leaderboard"><i class="fas fa-clipboard-list"></i> Leader Board</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/logout"><i class="fas fa-sign-out-alt"></i> Log Out</a>
+                        <a class="nav-link" href="/logout">Log Out</a>
                     </li>
                     </ul>
                 </div>
@@ -70,6 +67,10 @@
                         <div class="form-group">
                         <label for="exampleFormControlTextarea1">BIO</label>
                         <textarea class="form-control" name="bio" id="exampleFormControlTextarea1" rows="3"><%=user.bio%></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Emergency Contact Email</label>
+                            <input type="email" class="form-control" name="emergencyContactEmail" id="exampleInputEmail1" aria-describedby="emailHelp" value="<%=user.emergencyContactEmail%>">
                         </div>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
