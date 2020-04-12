@@ -17,7 +17,7 @@ Presentation Link: https://gotransport.netlify.com
 1. Free Coins on Every Transaction 
 1. Leaderboard for most no. of coins
 1. SocialPosts for creating awareness among the Youth 
-1. Authorization
+1. Authorization/Authentication
 1. Chatbot for Complaining
 
 > We are focussing on the need of safety in our transportation system. That's why we are taking the helping hand of Mapping Technologies along with some other user-interactive applications to improvise these situations so that the transportation system can be made safe for people of all genders and each age group.
