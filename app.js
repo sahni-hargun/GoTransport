@@ -77,13 +77,38 @@ app.get("/search",function(req,res){
 		})
    })
 
-app.get("/searchLocation", function(req, res){
-	res.render("trackerLocation");
+app.get("/safehouse", function(req, res){
+	res.render("safehouse");
 })
 
 app.get("/getLocation", function(req, res){
 	res.render("getLocation");
  });
+
+app.get("/safehouse1", function(req, res){
+	res.render("safehouse1");
+ });
+
+app.get("/safehouse2", function(req, res){
+	res.render("safehouse2");
+ });
+
+app.get("/safehouse3", function(req, res){
+	res.render("safehouse3");
+ });
+
+app.get("/safehouse4", function(req, res){
+	res.render("safehouse4");
+ });
+
+app.get("/safehouse5", function(req, res){
+	res.render("safehouse5");
+ });
+
+app.get("/safehouse6", function(req, res){
+	res.render("safehouse6");
+ });
+
  
  app.get("/geolocation",function(req,res){
 	var ip = req.query.ip;

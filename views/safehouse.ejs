@@ -1,0 +1,63 @@
+<% include ./partials/header %>
+<!DOCTYPE html> 
+<script src="http://maps.google.com/maps/api/js?sensor=false" 
+          type="text/javascript"></script>
+<body>
+  <br>
+  <h1 style="text-align: center; color: blue;">Safehouses in New Delhi</h1>
+  <br>
+  <div id="map" style="width: 100%; height: 500px;"></div>
+  <br>
+  <div class="container-fluid">
+    <h2>List of Safehouses:</h2>
+    <ul>
+      <li><a href="/safehouse1">CCD, Jail Road, Janak Puri</a></li>
+      <li><a href="/safehouse2">House of volunteer, Hari Nagar</a></li>
+      <li><a href="/safehouse3">House of volunteer, Dwarka</a></li>
+      <li><a href="/safehouse4">House of volunteer, Nirman Vihar</a></li>
+      <li><a href="/safehouse5">House of volunteer, Jorbagh</a></li>
+      <li><a href="/safehouse6">Burger King, Dwarka</a></li>
+    </ul>
+  </div>  
+  <br>
+</body>
+
+<style>
+</style>  
+
+  <script type="text/javascript">
+    var locations = [
+      ['CCD, Jail Road, Janak Puri', 28.627108, 77.092111, 1],
+      ['House of volunteer, Hari Nagar', 28.6261245, 77.1065026, 2],
+      ['House of volunteer, Dwarka', 28.5823, 77.0500, 3],
+      ['House of volunteer, Nirman Vihar', 28.6350, 77.2872, 4],
+      ['House of volunteer, Jorbagh', 28.5878, 77.2153, 5],
+      ['Burger King, Dwarka', 28.584911, 77.058285, 6],
+    ];
+
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 10,
+      center: new google.maps.LatLng(28.5885, 77.0780),
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    });
+
+    var infowindow = new google.maps.InfoWindow();
+
+    var marker, i;
+
+    for (i = 0; i < locations.length; i++) {  
+      marker = new google.maps.Marker({
+        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+        map: map
+      });
+
+      google.maps.event.addListener(marker, 'click', (function(marker, i) {
+        return function() {
+          infowindow.setContent(locations[i][0]);
+          infowindow.open(map, marker);
+        }
+      })(marker, i));
+    }
+  </script>
+
+<% include ./partials/footer %>
