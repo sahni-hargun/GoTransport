@@ -14,11 +14,6 @@ var request = require("request");
 const MongoClient = require('mongodb').MongoClient;
 // Relace with your own username, password and MongoDb cluster link.
 const uri = "mongodb+srv://SINGHHR:ayush123@cluster0-zq4ke.mongodb.net/test?retryWrites=true&w=majority";
-const client = new MongoClient(uri, { useNewUrlParser: true });
-client.connect(err => {
-  const collection = client.db("test").collection("devices");
-  client.close();
-});
 app.use(bodyparser.urlencoded({extended  : true}));
 // Replace with your own link.
 mongoose.connect("mongodb+srv://SINGHHR:ayush123@cluster0-zq4ke.mongodb.net/test?retryWrites=true&w=majority", {useNewUrlParser: true});
