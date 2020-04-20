@@ -13,10 +13,10 @@ var seedDB      = require("./seeds");
 var request = require("request");
 const MongoClient = require('mongodb').MongoClient;
 // Relace with your own username, password and MongoDb cluster link.
-const uri = "mongodb+srv://SINGHHR:ayush123@cluster0-zq4ke.mongodb.net/test?retryWrites=true&w=majority";
+const uri = "mongodb+srv://hello:world123@cluster0-ypyyr.mongodb.net/test?retryWrites=true&w=majority";
 app.use(bodyparser.urlencoded({extended  : true}));
 // Replace with your own link.
-mongoose.connect("mongodb+srv://SINGHHR:ayush123@cluster0-zq4ke.mongodb.net/test?retryWrites=true&w=majority", {useNewUrlParser: true});
+mongoose.connect("mongodb+srv://hello:world123@cluster0-ypyyr.mongodb.net/test?retryWrites=true&w=majority", {useNewUrlParser: true});
 mongoose.set("useFindAndModify", false);
 app.set("view engine", "ejs");
 app.use(express.static("public"));
